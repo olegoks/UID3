@@ -20,8 +20,8 @@ voice = document.querySelector('.search-input__voice-button');
 
 search = document.querySelector('.search-input__button');
 
-input = document.querySelector('.search-input');
-input.placeholder = 'wsdcsdc';
+//input = document.querySelector('.search-input');
+
 
 
 
@@ -36,7 +36,7 @@ voice.onclick = function() {
 // результат речи
 recognition.onresult = function(event) {
     var city = event.results[0][0].transcript;
-    input.placeholder = city;
+    // input.placeholder = city;
     search.click();
 }
 

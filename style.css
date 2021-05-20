@@ -10,6 +10,20 @@
         font-size: 62.5%
     }
     
+    #map {
+        display: flex;
+        width: 30%;
+        height: 40%;
+        border-radius: 15px;
+    }
+    
+    #weather_box {
+        position: absolute;
+        right: 0px;
+        top: 0px;
+        font-size: 2rem;
+    }
+    
     body {
         box-sizing: border-box;
         background-color: #e5e5e5;

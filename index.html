@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <title>Fancy Weather</title>
     <link href="style.css" rel="stylesheet">
+    <link href="owfont-regular.css" rel="stylesheet">
+
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js"></script>
+
 </head>
 
 <body>
@@ -11,18 +16,19 @@
   -->
 
 
+
     <div class="button-cluster">
         <div class="button-cluster__left-sub-cluster">
             <button class="button button--update">
-          <div class="spinner"></div>
-        </button>
+        <div class="spinner"></div>
+      </button>
             <div class="language-menu">
                 <button class="button drop-down-menu__face-button">
-                  <span>
-                    
-                  </span>
-                  <span class="arrow-down"></span>
-                </button>
+          <span>
+
+          </span>
+          <span class="arrow-down"></span>
+        </button>
                 <div class="drop-down-menu">
                     <button class="drop-down-menu__item button inactive" id="en">en</button>
                     <button class="drop-down-menu__item button inactive" id="ru">ru</button>
@@ -35,7 +41,8 @@
         <div class="button-cluster__right-sub-cluster">
             <input class="search-input" type="search" name="search-city" required="" placeholder="Search city or ZIP">
             <button class="button search-input__button">Search</button>
-            <button class="search-input__voice-button"></button></div>
+            <button class="search-input__voice-button"></button>
+        </div>
     </div>
     <!--<div class="main-wrapper">
     <div class="weather-data-cluster">
@@ -57,23 +64,29 @@
         <p class="forecast__temperature"></p><img class="forecast__icon" alt="&nbsp;">
       </div>
     </div>
+-->
 
-    <div class="map-cluster">
-        <div class="map-cluster__map">
-            <iframe class="map-iframe">
-            
-          </iframe></div>
-        <div class="map-cluster__coordinates">
-            <p></p>
-            <p></p>
-        </div>
+    <section id="weather_box">
+        <i class="weather-icon owf"></i>
+        <span class="temperature"></span>
+        <span class="humidity"></span>
+        <div class="wind"></div>
+        <div class="weather-description"></div>
+        <div id="city" contenteditable="true"></div>
+    </section>
+
+    <div id="map">
+
     </div>
 
+    <!--
     </div>
     <div class="ticker-wrapper">
         <div class="ticker"></div>
     </div>
 -->
+    <script src="weather.js"></script>
+    <script src="map.js"></script>
     <script src="voice.js"></script>
     <script src="my_main.js"></script>
     <script src="background.js"></script>
