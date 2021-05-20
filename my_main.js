@@ -13,4 +13,19 @@ languageButton.addEventListener('click', function() {
 farengateButton = document.getElementsByClassName('button--f');
 celsiumButton = document.getElementsByClassName('button button--c');
 
+function toggleButtons() {
+    fahrenheitButton.classList.toggle('inactive');
+    celsiusButton.classList.toggle('inactive');
+}
 
+farengateButton.addEventListener('click', function() {
+
+    toggleButtons();
+
+});
+
+celsiumButton.addEventListener('click', function() {
+
+    toggleButtons();
+
+});
