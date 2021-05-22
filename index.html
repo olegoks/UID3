@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Fancy Weather</title>
+    <link rel="stylesheet" href="owfont-regular.css">
     <link href="style.css" rel="stylesheet">
-    <link href="owfont-regular.css" rel="stylesheet">
+
 
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css" rel="stylesheet">
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js"></script>
@@ -12,23 +13,18 @@
 </head>
 
 <body>
-    <!--<script type="text/javascript" src="main.js"></script>
-  -->
-
-
-
     <div class="button-cluster">
         <div class="button-cluster__left-sub-cluster">
             <button class="button button--update">
-        <div class="spinner"></div>
-      </button>
+                <div class="spinner"></div>
+            </button>
             <div class="language-menu">
                 <button class="button drop-down-menu__face-button">
-          <span>
+                    <span>
 
-          </span>
-          <span class="arrow-down"></span>
-        </button>
+                    </span>
+                    <span class="arrow-down"></span>
+                </button>
                 <div class="drop-down-menu">
                     <button class="drop-down-menu__item button inactive" id="en">en</button>
                     <button class="drop-down-menu__item button inactive" id="ru">ru</button>
@@ -39,58 +35,74 @@
             <button class="button button--c">°C</button>
         </div>
         <div class="button-cluster__right-sub-cluster">
-            <input class="search-input" type="search" name="search-city" required="" placeholder="Search city or ZIP">
+            <input class="search-input" type="search" name="search-city" required="" placeholder="">
             <button class="button search-input__button">Search</button>
             <button class="search-input__voice-button"></button>
         </div>
     </div>
-    <!--<div class="main-wrapper">
-    <div class="weather-data-cluster">
-      <p class="weather-data-cluster__location"></p>
-      <p class="weather-data-cluster__date-time"></p>
-      <p class="weather-data-cluster__temperature-today"></p><img class="weather-data-cluster__weather-icon"
-        alt="&nbsp;">
-      <div class="weather-data-cluster__weather-data"></div>
-      <div class="forecast">
-        <p class="forecast__day"></p>
-        <p class="forecast__temperature"></p><img class="forecast__icon" alt="&nbsp;">
-      </div>
-      <div class="forecast">
-        <p class="forecast__day"></p>
-        <p class="forecast__temperature"></p><img class="forecast__icon" alt="&nbsp;">
-      </div>
-      <div class="forecast">
-        <p class="forecast__day"></p>
-        <p class="forecast__temperature"></p><img class="forecast__icon" alt="&nbsp;">
-      </div>
-    </div>
--->
+    <section class="content">
+        <section class="weather_location">
+            <section class="location_data">
+                <section class="location">
+                    <p class="city_name"></p>
+                    <p>&nbsp;</p>
+                    <p class="country_name"></p>
+                </section>
+                <section class="time_data">
+                    <section class="date"></section>
+                    <p>&nbsp;</p>
+                    <section class="time"></section>
+                </section>
+            </section>
 
-    <section id="weather_box">
-        <i class="weather-icon owf"></i>
-        <span class="temperature"></span>
-        <span class="humidity"></span>
-        <div class="wind"></div>
-        <div class="weather-description"></div>
-        <div id="city" contenteditable="true"></div>
+            <section class="weather">
+                <section id="first_weather_box">
+
+                    <section class="today_info">
+                        <section class="today_values">
+                            <span class="temperature today_temp"></span>
+                            <span class="humidity today_humidity"></span>
+                            <span class="wind today_wind"></span>
+                            <span class="weather_description today_decription"></span>
+                        </section>
+                    </section>
+                    <i class="weather_icon today_icon owf"></i>
+                </section>
+
+                <section class="other_days">
+                    <section class="second_weather_box">
+                        <span class="week_day"></span>
+                        <i class="weather_icon owf"></i>
+                        <span class="temperature"></span>
+                    </section>
+
+                    <section class="third_weather_box">
+                        <span class="week_day"></span>
+                        <i class="weather_icon owf"></i>
+                        <span class="temperature"></span>
+                    </section>
+
+                    <section class="fourth_weather_box">
+                        <span class="week_day"></span>
+                        <i class="weather_icon owf"></i>
+                        <span class="temperature"></span>
+                    </section>
+                </section>
+            </section>
+        </section>
+
+        <section class="map_display">
+            <div id="map"> </div>
+            <span></span>
+            <span></span>
+        </section>
+
     </section>
-
-    <div id="map">
-
-    </div>
-
-    <!--
-    </div>
-    <div class="ticker-wrapper">
-        <div class="ticker"></div>
-    </div>
--->
-    <script src="weather.js"></script>
-    <script src="map.js"></script>
+    <script src="time_date.js"></script>
+    <script src="weather_map.js"></script>
     <script src="voice.js"></script>
     <script src="my_main.js"></script>
     <script src="background.js"></script>
-
 
 </body>
 
