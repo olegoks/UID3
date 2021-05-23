@@ -12,9 +12,14 @@ languageButton.addEventListener('click', function() {
 farengateButton = document.getElementsByClassName('button--f')[0];
 celsiumButton = document.getElementsByClassName('button button--c')[0];
 
+temperatures = document.getElementsByClassName('temperature');
+
 farengateButton.addEventListener('click', function() {
 
     localStorage.setItem('temp_degr', '°F');
+
+    search.click();
+
 
 });
 
@@ -22,11 +27,14 @@ celsiumButton.addEventListener('click', function() {
 
     localStorage.setItem('temp_degr', '°C');
 
+    search.click();
+
 });
 
 RUButton = document.getElementById('ru');
 ENButton = document.getElementById('en');
 BEButton = document.getElementById('be');
+
 city_input = document.querySelector('.search-input');
 
 RUButton.addEventListener('click', () => {
@@ -38,8 +46,10 @@ RUButton.addEventListener('click', () => {
     city_input.placeholder = 'Введите название города';
     search.innerHTML = 'Поиск';
 
-});
+    search.click();
 
+
+});
 
 ENButton.addEventListener('click', () => {
 
@@ -49,6 +59,8 @@ ENButton.addEventListener('click', () => {
     languageButton.innerHTML = 'Language';
     city_input.placeholder = 'Enter city name';
     search.innerHTML = 'Search';
+
+    search.click();
 
 });
 
@@ -62,9 +74,20 @@ BEButton.addEventListener('click', () => {
     city_input.placeholder = 'Калі ласка, увядзіце назву горада';
     search.innerHTML = 'Пошук';
 
+    search.click();
+
 });
 
 current_lang = localStorage.getItem('language');
+current_degr = localStorage.getItem('temp_degr');
+current_city = localStorage.getItem('city_name');
+
+
+if (current_degr == null) {
+
+    localStorage.setItem('temp_degr', '°C');
+
+}
 
 if (current_lang == null)
     localStorage.setItem('language', 'en');

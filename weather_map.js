@@ -25,9 +25,58 @@ winds = document.getElementsByClassName('wind');
 city_name = document.querySelector('.city_name');
 country_name = document.querySelector('.country_name');
 
+
+function CelsInFar(celsium) {
+
+    return Math.round((celsium * 9 / 5) + 32);
+
+}
+
+function getHumidityString() {
+
+    current_lang = localStorage.getItem('language');
+
+    if (current_lang == 'en')
+        return 'Humidity';
+    else if (current_lang == 'ru')
+        return 'Влажность';
+    else if (current_lang == 'be')
+        return 'Вільготнасць';
+
+}
+
+function getTemperatureString() {
+
+    current_lang = localStorage.getItem('language');
+
+    if (current_lang == 'en')
+        return 'Temperature';
+    else if (current_lang == 'ru')
+        return 'Температура';
+    else if (current_lang == 'be')
+        return 'Тэмпература';
+
+}
+
+function getWindSpeedString() {
+
+    current_lang = localStorage.getItem('language');
+
+    if (current_lang == 'en')
+        return 'Wind speed';
+    else if (current_lang == 'ru')
+        return 'Скорость ветра';
+    else if (current_lang == 'be')
+        return 'Хуткасць ветру';
+
+}
+
 async function changeWeatherInfo() { //${city.placeholder}
 
     current_lang = localStorage.getItem('language');
+
+    if (city.value == "")
+        city.value = localStorage.getItem('city_name');
 
     const url = `https://api.openweathermap.org/data/2.5/forecast?q=${city.value}&lang=${current_lang}&units=metric&APPID=0ccf0b1c1a6737e16e4c88c68e630b77`;
     const res = await fetch(url);
@@ -50,13 +99,29 @@ async function changeWeatherInfo() { //${city.placeholder}
 
     const data = await res.json();
     weather_descriptions[0].innerHTML = data.list[0].weather[0].description;
-    humidities[0].innerHTML = `${data.list[0].main.humidity}%`;
-    winds[0].innerHTML = `${data.list[0].wind.speed} m/s`;
+    humidities[0].innerHTML = `${getHumidityString()}:${data.list[0].main.humidity}%`;
+    winds[0].innerHTML = `${getWindSpeedString()}:${data.list[0].wind.speed} m/s`;
 
     for (let i = 0; i < icons.length; i++) {
 
         icons[i].classList.add(`owf-${data.list[i].weather[0].id}`);
-        temperatures[i].textContent = `${data.list[i].main.temp}°C`;
+
+        current_degr = localStorage.getItem('temp_degr')
+
+        degrees = data.list[i].main.temp;
+
+        if (current_degr == '°F')
+            degrees = CelsInFar(degrees);
+
+        if (i != 0) {
+
+            temperatures[i].textContent = `${degrees}${ current_degr}`;
+
+        } else {
+
+            temperatures[i].textContent = `${getTemperatureString()}:${degrees}${ current_degr}`;
+
+        }
 
     }
 
@@ -65,9 +130,11 @@ async function changeWeatherInfo() { //${city.placeholder}
     country_name.innerHTML = data.city.country;
     city_name.innerHTML = city.value + ',';
 
+    localStorage.setItem('city_name', city.value);
+
 }
 
-//changeWeatherInfo();
+changeWeatherInfo();
 
 search.addEventListener('click', () => {
 
@@ -75,25 +142,16 @@ search.addEventListener('click', () => {
 
 });
 
-/*
-const res = await fetch(url);
+city.addEventListener('keypress', function(event) {
 
-if (!res.ok) {
+    //if Enter pressed
+    if (event.keyCode == 13) {
 
-    city.textContent = 'Incorrect city name';
 
-    return;
+        city.blur();
+        search.click();
+        localStorage.setItem('city_name', city_name.value);
 
-}
+    }
 
-localStorage.setItem('city_name', city.textContent);
-
-const data = await res.json();
-
-weatherIcon.classList.add(`owf-${data.weather[0].id}`);
-
-temperature.textContent = `${data.main.temp}°C`;
-weatherDescription.textContent = data.weather[0].description;
-humidity.innerHTML = `${data.main.humidity}%`;
-wind.innerHTML = `${data.wind.speed} m/s`;
-*/
+});
